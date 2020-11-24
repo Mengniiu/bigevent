@@ -31,7 +31,7 @@ function reg(e) {
     let fd = $(this).serialize();
     $.ajax({
         method: 'POST',
-        url: baseurl + '/api/reguser',
+        url:'/api/reguser',
         data: fd,
         success(res) {
             if (res.status != 0) return layui.layer.msg(res.message);
@@ -48,11 +48,11 @@ function login(e) {
     let fd = $(this).serialize();
     $.ajax({
         method: 'POST',
-        url: baseurl + '/api/login',
+        url:'/api/login',
         data: fd,
         success(res) {
             if (res.status != 0) return layui.layer.msg(res.message);
-            layer.msg(res.message, {
+            layui.layer.msg(res.message, {
                 icon: 6,
                 time: 1500 //1.5秒关闭（如果不配置，默认是3秒）
             }, function () {
