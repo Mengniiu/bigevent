@@ -7,14 +7,14 @@ $.ajaxPrefilter(function (res) {
             Authorization: localStorage.getItem('mytoken')
         }
     }
-    res.complete=function(re){
-        if (re.responseJSON.status==1&&re.responseJSON.message=='身份认证失败！')
-        layui.layer.msg(re.responseJSON.message,{
+    res.complete=function(res){
+        if (res.responseJSON.status==1&&res.responseJSON.message=='身份认证失败！')
+        layui.layer.msg(res.responseJSON.message,{
             icon: 1,
             time: 1500 //1.5秒关闭（如果不配置，默认是3秒）
         }, function () {
             localStorage.removeItem('mytoken');
-            location.href='/login.html'
-        });               
+            window.top.location.href='/login.html'
+        });
     }
 })
